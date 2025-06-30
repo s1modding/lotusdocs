@@ -23,11 +23,10 @@
     {{- with .Description | default ($.Param "description") }}
     <meta name="description" content="{{ . }}">
     {{- end }}
-    <meta name="keywords" content="Documentation, Hugo, Hugo Theme, Bootstrap" />
-    <meta name="author" content="Colin Wilson - Lotus Labs" />
-    <meta name="email" content="support@aigis.uk" />
-    <meta name="website" content="https://lotusdocs.dev" />
-    <meta name="Version" content="v0.1.0" />
+    <meta name="keywords" content="{{ delimit .Site.Params.keywords ", " }}" />
+    <meta name="website" content="{{ .Site.BaseURL }}" />
+    <meta name="Version" content="{{ .Site.Params.Version }}" />
+    <meta name="generator" content="Hugo {{ hugo.Version }} + Lotus Docs by colinwilson with s1modding edits" />
     <!-- favicon -->
     {{ block "favicon" . }}{{ partialCached (printf "%s/%s" ($.Scratch.Get "pathName") "head/favicon.html") . }}{{ end }}
     {{- partial (printf "%s/%s" ($.Scratch.Get "pathName") "head/opengraph") . }}
